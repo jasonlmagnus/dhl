@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* DHL x Magnus Partnership Color System */
+  --color-dhl-yellow: 45 100% 50%;
+  --color-dhl-red: 355 85% 45%;
+  --color-magnus-coral: 9 85% 60%;
+
+  /* Light Mode - Clean white with DHL yellow accents */
+  --color-background: 0 0% 100%;
+  --color-foreground: 0 0% 10%;
+
+  --color-card: 0 0% 98%;
+  --color-card-foreground: 0 0% 10%;
+
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 0 0% 10%;
+
+  --color-primary: 45 100% 50%; /* DHL Yellow */
+  --color-primary-foreground: 0 0% 0%;
+
+  --color-secondary: 355 85% 45%; /* DHL Red */
+  --color-secondary-foreground: 0 0% 100%;
+
+  --color-muted: 0 0% 96%;
+  --color-muted-foreground: 0 0% 40%;
+
+  --color-accent: 45 100% 95%;
+  --color-accent-foreground: 0 0% 10%;
+
+  --color-destructive: 355 85% 45%;
+  --color-destructive-foreground: 0 0% 100%;
+
+  --color-border: 0 0% 90%;
+  --color-input: 0 0% 90%;
+  --color-ring: 45 100% 50%;
+
+  --radius: 0.5rem;
+}
+
+/* Added dark mode color scheme with DHL/Magnus branding */
+.dark {
+  --color-background: 220 15% 8%;
+  --color-foreground: 0 0% 98%;
+
+  --color-card: 220 15% 10%;
+  --color-card-foreground: 0 0% 98%;
+
+  --color-popover: 220 15% 10%;
+  --color-popover-foreground: 0 0% 98%;
+
+  --color-primary: 45 100% 50%; /* DHL Yellow */
+  --color-primary-foreground: 0 0% 0%;
+
+  --color-secondary: 355 85% 45%; /* DHL Red */
+  --color-secondary-foreground: 0 0% 100%;
+
+  --color-muted: 220 15% 15%;
+  --color-muted-foreground: 0 0% 60%;
+
+  --color-accent: 220 15% 12%;
+  --color-accent-foreground: 45 100% 50%;
+
+  --color-destructive: 355 85% 45%;
+  --color-destructive-foreground: 0 0% 100%;
+
+  --color-border: 220 10% 20%;
+  --color-input: 220 10% 20%;
+  --color-ring: 45 100% 50%;
+}
+
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+  --card: var(--color-card);
+  --card-foreground: var(--color-card-foreground);
+  --popover: var(--color-popover);
+  --popover-foreground: var(--color-popover-foreground);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-foreground);
+  --secondary: var(--color-secondary);
+  --secondary-foreground: var(--color-secondary-foreground);
+  --muted: var(--color-muted);
+  --muted-foreground: var(--color-muted-foreground);
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-accent-foreground);
+  --destructive: var(--color-destructive);
+  --destructive-foreground: var(--color-destructive-foreground);
+  --border: var(--color-border);
+  --input: var(--color-input);
+  --ring: var(--color-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
