@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "DHL Golden Ticket Accelerator | Magnus Partnership",
   description: "Strategic account management platform for DHL Golden Ticket accounts",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
