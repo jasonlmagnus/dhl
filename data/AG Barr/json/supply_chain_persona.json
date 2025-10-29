@@ -1,0 +1,219 @@
+{
+    "id": "persona-agbarr-supplychain-2025",
+    "title": "Supply Chain Director – AG Barr",
+    "department": "ceo",
+    "region": "uk",
+    "sector": "fmcg",
+    "brand": "AG Barr",
+    "metadata": {
+      "version": "1.0",
+      "type": "extracted",
+      "region": "UK",
+      "department": "Supply Chain",
+      "lastUpdated": "2025-10-21"
+    },
+    "coreUnderstanding": {
+      "core": {
+        "role": "Leads AG Barr’s end-to-end supply chain strategy, ensuring production continuity, infrastructure scalability, and ESG-aligned growth across the beverage portfolio.",
+        "userGoalStatement": "Guarantee uninterrupted production and efficient distribution while enabling growth and meeting sustainability targets.",
+        "coreBelief": "Operational excellence and reliability are the foundations of brand growth and reputation.",
+        "contentImplication": "Messaging must highlight proven reliability, scalability, and tangible sustainability performance — not generic logistics efficiency."
+      },
+      "responsibilities": {
+        "items": [
+          { "Category": "Continuity", "Description": "Ensure production and logistics operations run without disruption, meeting daily throughput and service-level goals." },
+          { "Category": "Infrastructure", "Description": "Plan and scale warehouse and transport capacity aligned to manufacturing expansion (Project Gold, Milton Keynes)." },
+          { "Category": "Sustainability", "Description": "Deliver on AG Barr’s 2040 net-zero target, embedding Scope 3 reduction through partners and greener transport models." },
+          { "Category": "Cost & Efficiency", "Description": "Balance efficiency with resilience — optimise cost-to-serve amid inflation and labour shortages." },
+          { "Category": "Digitalisation", "Description": "Leverage automation, WMS upgrades, and API integration to enhance data visibility and agility." }
+        ],
+        "contentImplication": "Content should acknowledge operational realities: production uptime, warehouse bottlenecks, cost pressure, and sustainability KPIs."
+      },
+      "knowledge": {
+        "items": [
+          "Supply chain optimisation and capacity planning",
+          "Sustainability metrics (Scope 1–3, ESG reporting)",
+          "Warehouse automation and WMS systems",
+          "Contract logistics and 3PL management",
+          "Cold-chain and ambient beverage logistics"
+        ],
+        "contentImplication": "Use informed terminology — e.g., ‘capacity assurance’, ‘phased scalability’, ‘sustainability embedded not bolted on’ — to show domain fluency."
+      }
+    },
+    "strategicValuePoints": {
+      "connectionOpportunities": {
+        "items": [
+          { "Category": "Sustainability Alignment", "Description": "DHL's science-based targets and low-carbon transport directly support AG Barr's 2040 net-zero roadmap." },
+          { "Category": "Infrastructure Readiness", "Description": "Real-estate and warehousing investments demonstrate capacity to scale with brand growth:contentReference[oaicite:1]{index=1}." },
+          { "Category": "Data Visibility", "Description": "Open-book operations and live dashboards enable control and predictability across the network:contentReference[oaicite:2]{index=2}." }
+        ],
+        "contentImplication": "Demonstrate outcomes — resilience, uptime, and trust — rather than abstract capability claims."
+      },
+      "motivations": {
+        "items": [
+          "Operational stability and business continuity",
+          "Scalable, future-ready infrastructure",
+          "Credible sustainability performance",
+          "Data-driven visibility and control",
+          "Partnerships that de-risk growth"
+        ],
+        "contentImplication": "Show how DHL reduces operational risk and creates future-proof capacity through investment, not cost savings alone."
+      },
+      "needs": {
+        "items": [
+          { "Category": "Growth Enablement", "Description": "Warehousing and transport solutions that expand flexibly with acquisitions and brand demand (Boost, Funkin, Rubicon)." },
+          { "Category": "Risk Reduction", "Description": "Reliable partner who can mitigate disruption risk and ensure compliance with new UK packaging and return regulations:contentReference[oaicite:3]{index=3}." },
+          { "Category": "Sustainability Proof", "Description": "Evidence of measurable decarbonisation aligned with AG Barr’s ESG targets:contentReference[oaicite:4]{index=4}." }
+        ],
+        "contentImplication": "Anchor messages in quantifiable business outcomes — uptime, efficiency, CO₂ reduction, service levels."
+      }
+    },
+    "painPointsAndChallenges": {
+      "perceptionGaps": {
+        "items": [
+          { "Category": "Incumbent Lock-In", "Description": "Culina’s embedded position until 2027 creates perceived switching risk:contentReference[oaicite:5]{index=5}." },
+          { "Category": "Investment Risk", "Description": "Concerns around real-estate buy/leaseback models and capital exposure:contentReference[oaicite:6]{index=6}." }
+        ],
+        "contentImplication": "Address credibility and de-risking explicitly: show partnership investment and pay-as-you-grow flexibility."
+      },
+      "frustrations": {
+        "items": [
+          "Fragmented logistics network limiting visibility and control",
+          "Pressure from manufacturing to resolve space constraints quickly",
+          "Reliance on partners who prioritise cost over long-term alignment"
+        ],
+        "contentImplication": "Position DHL as the partner solving these constraints with integrated, future-ready solutions."
+      },
+      "emotionalTriggers": {
+        "items": [
+          { "Trigger": "Production disruption or missed retailer SLAs", "Emotional_Response": "Anxiety about brand damage", "Messaging_Implication": "Reinforce reliability and resilience — ‘Trusted to deliver’." },
+          { "Trigger": "Board pressure for sustainability results", "Emotional_Response": "Desire for credible proof and quick wins", "Messaging_Implication": "Highlight measurable ESG progress and transparency." },
+          { "Trigger": "Complex supplier coordination", "Emotional_Response": "Frustration with inefficiency", "Messaging_Implication": "Promote DHL’s one-system, every-solution model." }
+        ],
+        "contentImplication": "Use reassurance and evidence-based storytelling — metrics, case studies, and proof points."
+      }
+    },
+    "engagementApproach": {
+      "description": "A pragmatic, operations-first leader focused on measurable results. Prefers concise, data-led engagement demonstrating reliability, ROI, and sustainability outcomes.",
+      "behaviors": {
+        "items": [
+          "Fact-driven and sceptical of marketing language",
+          "Values speed, accuracy, and follow-through",
+          "Looks for peers’ validation and proof of performance"
+        ],
+        "contentImplication": "Lead with credible data, operational benchmarks, and site-ready examples rather than brand narrative."
+      },
+      "collaborationInsights": {
+        "items": [
+          "Wants integrated, one-accountable-partner relationships",
+          "Prefers clear governance and escalation routes",
+          "Engages well with technical specialists and operations leaders"
+        ],
+        "contentImplication": "Engage through solution engineers and sustainability leads, not just account managers."
+      },
+      "problemSolvingMethod": {
+        "description": "Analytical and scenario-based; balances production and commercial priorities.",
+        "value": "Uses metrics and best-practice benchmarking to evaluate logistics options."
+      },
+      "analogies": {
+        "items": [
+          { "Category": "Reliability", "Description": "‘Production line heartbeat’ — the supply chain cannot skip a beat." },
+          { "Category": "Growth Enablement", "Description": "‘Runway for expansion’ — capacity must grow ahead of demand." }
+        ],
+        "contentImplication": "Use operational metaphors that tie reliability and scalability to growth outcomes."
+      },
+      "messagingAngles": {
+        "description": "Emphasise performance, partnership, and progress — not promises.",
+        "items": [
+          { "Category": "Proof of Performance", "Description": "Demonstrate reliability metrics, uptime rates, and SLA adherence." },
+          { "Category": "Sustainable Scalability", "Description": "Show how DHL’s real-estate and low-carbon solutions future-proof growth." },
+          { "Category": "Transparency & Control", "Description": "Offer visibility dashboards and open-book assurance." }
+        ],
+        "contentImplication": "Provide evidence-based messaging with operational language — ‘service level’, ‘carbon intensity’, ‘throughput efficiency’."
+      }
+    },
+    "supportingResources": {
+      "description": "Primary sources include AG Barr workshop outputs and Magnus intelligence files detailing DMU priorities, market drivers, and proof points.",
+      "referenceSources": [
+        {
+          "Category": "Internal Discovery",
+          "Sources": [
+            "Magnus Consulting_DHL AG Barr VP and DMU Workshop Summary",
+            "Magnus – Value Proposition Angles AG Barr V2",
+            "DHL GT Accelerator Alignment WS Deck AG Barr"
+          ],
+          "URLs": []
+        },
+        {
+          "Category": "Market Intelligence",
+          "Sources": [
+            "Magnus Consulting DHL GT Accelerator CCC Intelligence Report",
+            "AG Barr Annual Report 2024",
+            "Beverage Industry News 2025"
+          ],
+          "URLs": [
+            "https://www.agbarr.co.uk/media/z1mfri2i/48462-ag-barr-annual-report-2024-web.pdf"
+          ]
+        }
+      ]
+    },
+    "regionalContext": {
+      "economicFactors": [
+        "UK FMCG logistics inflation at 12–15% cost increase since 2023",
+        "Labour shortages in warehousing and transport",
+        "High energy and fuel costs driving efficiency focus"
+      ],
+      "regulatoryEnvironment": [
+        "UK Deposit Return Scheme (DRS)",
+        "Extended Producer Responsibility (EPR) regulations",
+        "European Green Deal transport emission reduction targets:contentReference[oaicite:7]{index=7}"
+      ],
+      "culturalNuances": [
+        "Collaborative business relationships built on trust and long-term reliability",
+        "Sustainability and transparency increasingly central to partnership evaluations"
+      ],
+      "localChallenges": [
+        "Fragmented warehousing network and legacy systems",
+        "Dependence on incumbent logistics partner (Culina) until 2027",
+        "Balancing rapid growth with ESG commitments"
+      ]
+    },
+    "quantitativeContext": {
+      "economicIndicators": [
+        { "metric": "UK FMCG market size", "value": "£253.4 bn (2024)", "context": "Forecast £394.5 bn by 2033:contentReference[oaicite:8]{index=8}" },
+        { "metric": "AG Barr Revenue 2024", "value": "£400 m (+25.9% YoY)", "context": "Strong growth from IRN-BRU and Boost integration:contentReference[oaicite:9]{index=9}" },
+        { "metric": "AG Barr Net-Zero Target", "value": "2040 commitment", "context": "43% carbon reduction achieved to date:contentReference[oaicite:10]{index=10}" }
+      ],
+      "performanceMetrics": [
+        {
+          "category": "Supply Chain",
+          "metrics": [
+            "Production uptime > 98%",
+            "Transport cost per case (benchmark)",
+            "Warehouse capacity utilisation %",
+            "Carbon emissions per tonne km"
+          ]
+        }
+      ],
+      "marketData": [
+        "Transportation prices rose 66.8% in Dec 2024 (Logistics Managers Index):contentReference[oaicite:11]{index=11}",
+        "62% of FMCG leaders now see sustainability as a primary growth driver:contentReference[oaicite:12]{index=12}"
+      ]
+    },
+    "culturalContext": {
+      "terminology": [
+        { "term": "Project Gold", "meaning": "AG Barr’s manufacturing and warehouse expansion programme", "significance": "Drives urgent capacity planning and logistics realignment needs" },
+        { "term": "No Time To Waste", "meaning": "AG Barr’s corporate ESG programme toward net zero by 2040", "significance": "Frames sustainability as core business strategy not CSR" }
+      ],
+      "frameworks": [
+        { "name": "Audience Benefit Ladder", "description": "Magnus framework linking functional and emotional benefits", "application": "Used to align DHL messaging with decision-maker priorities" },
+        { "name": "Golden Ticket Accelerator", "description": "DHL’s strategic account growth programme", "application": "Guides persona creation, messaging and stakeholder plans for AG Barr" }
+      ],
+      "practices": [
+        "Collaborative decision-making with C-suite involvement",
+        "Emphasis on trusted, long-term partnerships over short-term price gains",
+        "Preference for data-backed business cases in supplier selection"
+      ]
+    }
+  }
+  

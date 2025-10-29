@@ -20,7 +20,7 @@ export default async function AccountPage({ params }: AccountPageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-muted/10 to-background">
-      <header className="bg-[hsl(45,100%,50%)] border-b border-[hsl(45,100%,45%)] sticky top-0 z-50">
+      <header className="bg-[#FFCC00] border-b border-[#E6B800] sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
@@ -33,12 +33,13 @@ export default async function AccountPage({ params }: AccountPageProps) {
               </Link>
               <div className="h-6 w-px bg-black/20" />
               <div className="flex items-center gap-3">
-                <img
-                  src={account.logo || "/placeholder.svg"}
-                  alt={`${account.name} logo`}
-                  className="h-8 w-8 rounded object-cover bg-white"
-                />
-                <h1 className="text-lg font-semibold text-black">{account.name}</h1>
+                <div className="max-w-[120px] w-full">
+                  <img
+                    src={account.logo || "/placeholder.svg"}
+                    alt={`${account.name} logo`}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -52,7 +53,7 @@ export default async function AccountPage({ params }: AccountPageProps) {
         </div>
       </header>
 
-      <div className="h-1 bg-gradient-to-r from-[hsl(45,100%,50%)] via-[hsl(355,85%,45%)] to-[hsl(45,100%,50%)]" />
+      <div className="h-1 bg-gradient-to-r from-[#FFCC00] via-[hsl(355,85%,45%)] to-[#FFCC00]" />
 
       {/* Account Content */}
       <div className="container mx-auto px-6 py-8">

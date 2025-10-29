@@ -22,45 +22,29 @@ const averageReadiness =
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-[hsl(45,100%,50%)] border-b border-[hsl(45,100%,45%)]">
+      <header className="bg-[#FFCC00] border-b border-[#E6B800] sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center">
-                <svg className="h-10 w-auto" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" fill="#FFCC00" />
-                  <path d="M15 12H25L20 20H30L25 28H15L20 20H10L15 12Z" fill="#D40511" />
-                  <text x="35" y="26" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="bold" fill="#D40511">
-                    DHL
-                  </text>
-                </svg>
+                <img src="/dhl_logo.png" alt="DHL logo" className="h-10 w-auto" />
               </div>
 
               <div className="h-8 w-px bg-black/20" />
 
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold tracking-tight text-[#D40511]">MAGNUS</span>
-                <span className="text-xs font-semibold tracking-wider text-black/60">CONSULTING</span>
+              <div className="flex items-center">
+                <img src="/magnus.png" alt="MAGNUS CONSULTING logo" className="h-8 w-auto mix-blend-multiply" />
               </div>
             </div>
 
-            <nav className="flex items-center gap-6">
-              <Link href="#" className="text-sm font-medium text-black/70 hover:text-black transition-colors">
-                Dashboard
-              </Link>
-              <Link href="#" className="text-sm font-medium text-black/70 hover:text-black transition-colors">
-                Analytics
-              </Link>
-              <Link href="#" className="text-sm font-medium text-black/70 hover:text-black transition-colors">
-                Reports
-              </Link>
+            <div className="flex items-center">
               <ThemeToggle />
-            </nav>
+            </div>
           </div>
         </div>
       </header>
 
-      <section className="relative border-b border-border bg-gradient-to-br from-[hsl(45,100%,50%)] via-[hsl(45,100%,55%)] to-[hsl(40,100%,50%)] overflow-hidden">
+      <section className="relative border-b border-border bg-gradient-to-r from-[#FFCC00] via-[#E6B800] to-[#FFCC00] overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[hsl(355,85%,45%)] rounded-full blur-3xl opacity-20" />
         <div className="container relative mx-auto px-6 py-16">
@@ -127,11 +111,11 @@ export default function HomePage() {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[hsl(45,100%,50%)]/10 to-transparent rounded-bl-full" />
                   <CardHeader className="relative">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="h-16 w-16 rounded-lg overflow-hidden border-2 border-[hsl(45,100%,50%)] shadow-md">
+                      <div className="max-w-[160px] w-full">
                         <img
                           src={account.logo || "/placeholder.svg"}
                           alt={`${account.name} logo`}
-                          className="h-full w-full object-cover bg-white"
+                          className="w-full h-auto object-contain"
                         />
                       </div>
                       <Badge className="bg-[hsl(355,85%,45%)] text-white border-0 shadow-md">{account.status}</Badge>
