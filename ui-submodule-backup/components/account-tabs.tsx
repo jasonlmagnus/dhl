@@ -228,8 +228,7 @@ export function AccountTabs({ account }: AccountTabsProps) {
             <div className="space-y-2 p-4 bg-[hsl(355,85%,45%)]/5 rounded-lg">
               <div className="font-semibold text-sm text-foreground">For CFOs:</div>
               <p className="text-sm text-muted-foreground leading-relaxed pl-4 border-l-4 border-[hsl(355,85%,45%)]">
-                "Transparent pricing with no hidden costs, plus efficiency gains that improve your bottom line by up to
-                15%"
+                "Capital-light warehousing and open-book reporting that protect ROCE while evidencing Scope 3 progress"
               </p>
             </div>
             <div className="space-y-2 p-4 bg-[hsl(9,85%,60%)]/5 rounded-lg">
@@ -284,30 +283,30 @@ export function AccountTabs({ account }: AccountTabsProps) {
               <div className="h-16 w-16 rounded-full bg-gradient-to-br from-[hsl(355,85%,45%)] to-[hsl(350,85%,40%)] flex items-center justify-center mb-4 shadow-lg">
                 <Users className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-foreground">Chief Financial Officer</CardTitle>
-              <CardDescription>Financial Decision Maker</CardDescription>
+              <CardTitle className="text-foreground">Chief Finance & Operating Officer</CardTitle>
+              <CardDescription>Finance & Operations Lead</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="p-3 bg-[hsl(355,85%,45%)]/10 rounded-lg">
                 <div className="text-sm font-semibold mb-2 text-foreground">Goals</div>
                 <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                  <li>Reduce logistics costs</li>
-                  <li>Improve cash flow predictability</li>
-                  <li>Minimize capital expenditure</li>
+                  <li>Sustain the 5-15-20 growth, margin, and ROCE commitments</li>
+                  <li>Keep net cash headroom while funding Project Gold and acquisitions</li>
+                  <li>Demonstrate verifiable Scope 3 reductions to investors and regulators</li>
                 </ul>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg">
                 <div className="text-sm font-semibold mb-2 text-foreground">Challenges</div>
                 <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                  <li>Rising transportation costs</li>
-                  <li>Unpredictable logistics spend</li>
-                  <li>ROI justification pressure</li>
+                  <li>Balancing capex across infrastructure, brands, and M&A</li>
+                  <li>Switching from Culina without risking retailer SLA penalties</li>
+                  <li>Margin pressure from inflation, DRS, and EPR compliance costs</li>
                 </ul>
               </div>
               <div className="p-3 bg-[hsl(355,85%,45%)]/10 rounded-lg border-l-4 border-[hsl(355,85%,45%)]">
                 <div className="text-sm font-semibold mb-2 text-foreground">What DHL Offers</div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Transparent pricing, efficiency gains, and flexible payment terms
+                  Pay-as-you-grow infrastructure backed by investor-grade dashboards and low-carbon operations
                 </p>
               </div>
             </CardContent>

@@ -47,6 +47,11 @@ export interface AccountRecord {
   differentiators: string[]
   valueFocus: string[]
   keyTakeaways: string[]
+  // Optional rich persona data loaded from dedicated JSON documents
+  supplyChainPersona?: SupplyChainPersona
+  cfoPersona?: SupplyChainPersona
+  // Optional structured value proposition content
+  valueProp?: ValuePropContent
 }
 
 interface AccountConfig {
@@ -73,7 +78,7 @@ const ACCOUNT_CATALOG: AccountConfig[] = [
     id: "ag-barr",
     name: "AG Barr",
     folder: "AG Barr",
-    logo: "/ag-barr-logo.jpg",
+    logo: "/ag_barr_colour.png",
     opportunity: { display: "£40m", valueMillions: 40, currency: "GBP" },
     sector: "FMCG",
     region: "UK",
@@ -87,7 +92,7 @@ const ACCOUNT_CATALOG: AccountConfig[] = [
     id: "saint-gobain",
     name: "Saint-Gobain",
     folder: "St Gobain",
-    logo: "/placeholder-logo.png",
+    logo: "/Saint-Gobain_logo.png",
     opportunity: { display: "£100m+", valueMillions: 100, currency: "GBP" },
     sector: "Building Materials",
     region: "UK & Europe",
@@ -101,7 +106,7 @@ const ACCOUNT_CATALOG: AccountConfig[] = [
     id: "msd",
     name: "MSD",
     folder: "TMC",
-    logo: "/placeholder-logo.png",
+    logo: "/msd.svg",
     opportunity: { display: "€38m", valueMillions: 33, currency: "GBP" },
     sector: "Life Sciences",
     region: "UK & Ireland",
@@ -140,6 +145,51 @@ type AlignmentDeck = {
   successSignals: SuccessSignal[]
 }
 
+// Minimal shape for the Supply Chain persona we render
+export interface SupplyChainPersona {
+  id: string
+  title: string
+  metadata?: {
+    version?: string
+    department?: string
+    region?: string
+    lastUpdated?: string
+  }
+  coreUnderstanding?: {
+    core?: {
+      role?: string
+      userGoalStatement?: string
+      coreBelief?: string
+    }
+    responsibilities?: {
+      items?: Array<{ Category: string; Description: string }>
+    }
+  }
+  strategicValuePoints?: {
+    motivations?: { items?: string[] }
+    needs?: { items?: Array<{ Category: string; Description: string }> }
+  }
+  painPointsAndChallenges?: {
+    frustrations?: { items?: string[] }
+  }
+}
+
+export interface ValuePropContent {
+  statement: string[]
+  statementSource?: string
+  subMessages: Array<{
+    title: string
+    bullets: string[]
+    source?: string
+  }>
+  personaResonance: Array<{
+    persona: string
+    priorities: string[]
+    resonance: string
+    source?: string
+  }>
+}
+
 type IntelligenceReport = {
   keyTakeaways: string[]
 }
@@ -163,6 +213,11 @@ function buildAccountRecord(config: AccountConfig): AccountRecord {
   const workshop = loadWorkshopSummary(baseDir)
   const alignment = loadAlignmentDeck(baseDir)
   const intelligence = loadIntelligenceReport(baseDir)
+
+  // Optionally load rich persona JSONs if present (AG Barr Supply Chain for now)
+  const supplyChainPersona = loadPersonaDocument(baseDir, "supply_chain_persona.json")
+  const cfoPersona = loadPersonaDocument(baseDir, "cfo_coo_persona.json")
+  const valueProp = loadValueProp(baseDir)
 
   return {
     id: config.id,
@@ -198,6 +253,9 @@ function buildAccountRecord(config: AccountConfig): AccountRecord {
     differentiators: workshop.differentiators,
     valueFocus: workshop.valueFocus,
     keyTakeaways: intelligence.keyTakeaways,
+    supplyChainPersona,
+    cfoPersona,
+    valueProp,
   }
 }
 
@@ -363,6 +421,26 @@ function loadIntelligenceReport(baseDir: string): IntelligenceReport {
   const uniqueTakeaways = Array.from(new Set(keyTakeaways.filter(Boolean)))
 
   return { keyTakeaways: uniqueTakeaways }
+}
+
+function loadPersonaDocument(baseDir: string, fileName: string): SupplyChainPersona | undefined {
+  const candidate = path.join(baseDir, fileName)
+  if (!fs.existsSync(candidate)) return undefined
+  try {
+    return readJson<SupplyChainPersona>(candidate)
+  } catch {
+    return undefined
+  }
+}
+
+function loadValueProp(baseDir: string): ValuePropContent | undefined {
+  const candidate = path.join(baseDir, "value_proposition.json")
+  if (!fs.existsSync(candidate)) return undefined
+  try {
+    return readJson<ValuePropContent>(candidate)
+  } catch {
+    return undefined
+  }
 }
 
 function collectDelimitedSection(lines: string[], heading: string): string[] {

@@ -8,6 +8,9 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeHighlight from "rehype-highlight"
 import {
   AlertCircle,
   CheckCircle2,
@@ -32,12 +35,13 @@ export function AccountTabs({ account }: AccountTabsProps) {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content: `Hello! I'm your AI assistant for ${account.name}. I’m connected to the Golden Ticket data room, including workshop summaries, competitor intelligence, and value proposition routes. What would you like to explore first?`,
+      content: `Hello! I'm your AI assistant for ${account.name}. I'm connected to the Golden Ticket data room, including workshop summaries, competitor intelligence, and value proposition routes. What would you like to explore first?`,
     },
   ])
   const [inputMessage, setInputMessage] = useState("")
   const [isStreaming, setIsStreaming] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [selectedPersona, setSelectedPersona] = useState<string | null>(null)
   const abortControllerRef = useRef<AbortController | null>(null)
   const chatContainerRef = useRef<HTMLDivElement | null>(null)
 
@@ -51,6 +55,13 @@ export function AccountTabs({ account }: AccountTabsProps) {
   const objectiveSummary = account.nearTermPriorities.slice(0, 3).join("; ")
   const keyChallengeSummary = account.summary.keyChallenges.slice(0, 2).join("; ")
   const differentiatorSummary = account.differentiators.slice(0, 2).join("; ")
+
+  const personaDocument =
+    selectedPersona === "Supply Chain Officer"
+      ? account.supplyChainPersona
+      : selectedPersona === "CFO/COO"
+        ? account.cfoPersona
+        : undefined
 
   const updateAssistantMessage = (content: string) => {
     setChatMessages((prev) => {
@@ -383,7 +394,87 @@ export function AccountTabs({ account }: AccountTabsProps) {
       </TabsContent>
 
       <TabsContent value="value-prop" className="space-y-6">
-        {account.voiceOfCustomer.length > 0 && (
+        {account.valueProp && (
+          <Card className="border-2 border-[hsl(45,100%,50%)] shadow-lg">
+            <CardHeader className="bg-gradient-to-r from-[hsl(45,100%,50%)]/10 to-[hsl(355,85%,45%)]/10">
+              <CardTitle className="text-foreground">Value Proposition Statement</CardTitle>
+              {account.valueProp.statementSource && (
+                <CardDescription>Source: {account.valueProp.statementSource}</CardDescription>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {account.valueProp.statement.map((p, idx) => (
+                <p key={idx} className="text-sm leading-relaxed text-foreground">
+                  {p}
+                </p>
+              ))}
+            </CardContent>
+          </Card>
+        )}
+
+        {account.valueProp?.subMessages?.length ? (
+          <Card className="border-2 border-[hsl(355,85%,45%)]/50 shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-foreground">Supporting Sub-Messages / Proof Points</CardTitle>
+              {account.valueProp.subMessages[0]?.source && (
+                <CardDescription>Source: {account.valueProp.subMessages[0].source}</CardDescription>
+              )}
+            </CardHeader>
+            <CardContent className="grid gap-6 md:grid-cols-3">
+              {account.valueProp.subMessages.map((msg, idx) => (
+                <div key={idx} className="p-4 rounded-lg border border-[hsl(45,100%,50%)]/30 bg-muted/30">
+                  <div className="text-sm font-semibold text-foreground mb-2">{msg.title}</div>
+                  <ul className="space-y-2">
+                    {msg.bullets.map((b, i) => (
+                      <li key={i} className="text-sm text-muted-foreground leading-relaxed">{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        ) : null}
+
+        {account.valueProp?.personaResonance?.length ? (
+          <Card className="border-2 border-muted/70 shadow-md">
+            <CardHeader>
+              <CardTitle className="text-foreground">Persona Resonance Mapping</CardTitle>
+              {account.valueProp.personaResonance[0]?.source && (
+                <CardDescription>Source: {account.valueProp.personaResonance[0].source}</CardDescription>
+              )}
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-muted-foreground border-b">
+                      <th className="py-2 pr-4">Persona</th>
+                      <th className="py-2 pr-4">Top 3 Priorities</th>
+                      <th className="py-2">Message Resonance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {account.valueProp.personaResonance.map((row, idx) => (
+                      <tr key={idx} className="border-b last:border-b-0 align-top">
+                        <td className="py-3 pr-4 font-medium text-foreground whitespace-nowrap">{row.persona}</td>
+                        <td className="py-3 pr-4">
+                          <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                            {row.priorities.map((p, i) => (
+                              <li key={i}>{p}</li>
+                            ))}
+                          </ul>
+                        </td>
+                        <td className="py-3 text-muted-foreground">{row.resonance}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        ) : null}
+
+        {!account.valueProp && account.voiceOfCustomer.length > 0 && (
           <Card className="border-2 border-[hsl(45,100%,50%)] shadow-lg">
             <CardHeader className="bg-gradient-to-r from-[hsl(45,100%,50%)]/10 to-[hsl(355,85%,45%)]/10">
               <CardTitle className="text-foreground">Voice of the Customer</CardTitle>
@@ -488,7 +579,7 @@ export function AccountTabs({ account }: AccountTabsProps) {
           <Card className="border-2 border-[hsl(355,85%,45%)]/50 shadow-lg">
             <CardHeader>
               <CardTitle className="text-foreground">Audience Groups</CardTitle>
-              <CardDescription>Focus personas and the themes that resonated in discovery.</CardDescription>
+              <CardDescription>Focus personas and the themes that resonated in discovery. Click to explore details.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Badge className="bg-[hsl(355,85%,45%)]/10 text-[hsl(355,85%,45%)] border-[hsl(355,85%,45%)]/40">
@@ -496,11 +587,124 @@ export function AccountTabs({ account }: AccountTabsProps) {
               </Badge>
               <div className="flex flex-wrap gap-3">
                 {account.personas.map((persona, index) => (
-                  <Badge key={index} variant="outline" className="text-sm border-[hsl(355,85%,45%)]/40">
+                  <button
+                    key={index}
+                    onClick={() => setSelectedPersona(selectedPersona === persona ? null : persona)}
+                    className={`px-3 py-1 rounded-full text-sm border transition-all duration-200 ${
+                      selectedPersona === persona
+                        ? "bg-[hsl(355,85%,45%)] text-white border-[hsl(355,85%,45%)] shadow-md"
+                        : "bg-white text-foreground border-[hsl(355,85%,45%)]/40 hover:bg-[hsl(355,85%,45%)]/10 hover:border-[hsl(355,85%,45%)]"
+                    }`}
+                  >
                     {persona}
-                  </Badge>
+                  </button>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {selectedPersona && (
+          <Card className="border-2 border-[hsl(45,100%,50%)]/60 shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-foreground">{selectedPersona} Persona</CardTitle>
+              <CardDescription>
+                {personaDocument
+                  ? "Rendered from the approved persona document for this account."
+                  : "Persona details and characteristics based on workshop insights."}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-5">
+              {personaDocument ? (
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="p-4 rounded-lg border border-[hsl(45,100%,50%)]/30 bg-muted/30">
+                      <div className="text-xs uppercase text-muted-foreground mb-1">Title</div>
+                      <div className="text-sm font-semibold text-foreground">{personaDocument.title}</div>
+                    </div>
+                    <div className="p-4 rounded-lg border border-[hsl(45,100%,50%)]/30 bg-muted/30">
+                      <div className="text-xs uppercase text-muted-foreground mb-1">Department</div>
+                      <div className="text-sm text-foreground">{personaDocument.metadata?.department ?? "—"}</div>
+                    </div>
+                    <div className="p-4 rounded-lg border border-[hsl(45,100%,50%)]/30 bg-muted/30">
+                      <div className="text-xs uppercase text-muted-foreground mb-1">Region</div>
+                      <div className="text-sm text-foreground">{personaDocument.metadata?.region ?? "—"}</div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <div className="text-sm font-semibold text-foreground">Role</div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {personaDocument.coreUnderstanding?.core?.role ?? "—"}
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="text-sm font-semibold text-foreground">Primary Goal</div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {personaDocument.coreUnderstanding?.core?.userGoalStatement ?? "—"}
+                      </p>
+                    </div>
+                  </div>
+
+                  {personaDocument.coreUnderstanding?.responsibilities?.items && (
+                    <div>
+                      <div className="text-sm font-semibold text-foreground mb-2">Key Responsibilities</div>
+                      <ul className="space-y-2">
+                        {personaDocument.coreUnderstanding.responsibilities.items.map((item, idx) => (
+                          <li key={idx} className="text-sm text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground">{item.Category}:</span> {item.Description}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {personaDocument.strategicValuePoints?.motivations?.items && (
+                    <div>
+                      <div className="text-sm font-semibold text-foreground mb-2">Motivations</div>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {personaDocument.strategicValuePoints.motivations.items.map((item, idx) => (
+                          <li key={idx} className="text-sm text-muted-foreground leading-relaxed">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {personaDocument.strategicValuePoints?.needs?.items && (
+                    <div>
+                      <div className="text-sm font-semibold text-foreground mb-2">Needs</div>
+                      <ul className="space-y-2">
+                        {personaDocument.strategicValuePoints.needs.items.map((item, idx) => (
+                          <li key={idx} className="text-sm text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground">{item.Category}:</span> {item.Description}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {personaDocument.painPointsAndChallenges?.frustrations?.items && (
+                    <div>
+                      <div className="text-sm font-semibold text-foreground mb-2">Frustrations</div>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {personaDocument.painPointsAndChallenges.frustrations.items.map((item, idx) => (
+                          <li key={idx} className="text-sm text-muted-foreground leading-relaxed">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="text-center py-8">
+                  <div className="text-muted-foreground mb-2">
+                    {selectedPersona} persona details are being prepared.
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    This persona will be populated with detailed insights from workshop data and intelligence reports.
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         )}
@@ -572,7 +776,18 @@ export function AccountTabs({ account }: AccountTabsProps) {
                         : "bg-[hsl(355,85%,45%)] text-white"
                     }`}
                   >
-                    {message.content}
+                     {message.role === "assistant" ? (
+                       <div className="prose prose-sm max-w-none prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-code:text-foreground prose-pre:bg-muted prose-pre:text-foreground">
+                         <ReactMarkdown
+                           remarkPlugins={[remarkGfm]}
+                           rehypePlugins={[rehypeHighlight]}
+                         >
+                           {message.content}
+                         </ReactMarkdown>
+                       </div>
+                     ) : (
+                       message.content
+                     )}
                   </div>
                 </div>
               ))}
